@@ -1,0 +1,28 @@
+syntax = "proto3"; // 指定proto版本
+package user;     // 指定默认包名
+//编译命令
+//protoc --go-grpc_out=:. --go_out=. ./user.proto
+//protoc --go-grpc_out=require_unimplemented_servers=false:. --go_out=. ./user.proto
+
+
+// 指定golang包名
+option go_package = "./user";
+
+// 定义Hello服务
+service User {
+  // 定义SayHello方法
+  rpc GetUser(GetUserReq) returns (GetUserResp) {}
+}
+
+// HelloRequest 请求结构
+message GetUserReq {
+  string id = 1;
+}
+
+// HelloResponse 响应结构
+message GetUserResp {
+  string id = 1;
+  string name = 2;
+  string phone = 3;
+  string phone1 = 4;
+}
